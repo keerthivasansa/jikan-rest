@@ -68,6 +68,8 @@ RUN set -ex \
     && chmod +x docker-entrypoint.php \
     && chmod +x docker-entrypoint.sh
 
+RUN php artisan indexer:genres
+RUN php artisan indexer:anime
 EXPOSE 8080
 EXPOSE 2114
 

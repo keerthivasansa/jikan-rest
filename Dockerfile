@@ -27,6 +27,8 @@ RUN	set -ex \
 	&& chmod +x /usr/bin/supercronic \
 	&& mkdir /etc/supercronic \
 	&& echo '*/1 * * * * php /app/artisan schedule:run' > /etc/supercronic/laravel \
+	&& echo '0 */5 * * * php /app/artisan indexer:anime --resume' > /etc/supercronic/laravel \
+	&& echo '*/1 * * * * php /app/artisan indexer:genres' > /etc/supercronic/laravel \
 	&& rm -rf /var/lib/apt/lists/* \
 	# enable opcache for CLI and JIT, docs: <https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.jit>
 	&& echo -e "\nopcache.enable=1\nopcache.enable_cli=1\nopcache.jit_buffer_size=32M\nopcache.jit=1235\n" >> \
@@ -68,8 +70,6 @@ RUN set -ex \
     && chmod +x docker-entrypoint.php \
     && chmod +x docker-entrypoint.sh
 
-RUN php artisan indexer:genres
-RUN php artisan indexer:anime
 EXPOSE 8080
 EXPOSE 2114
 

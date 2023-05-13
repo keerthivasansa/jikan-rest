@@ -22,7 +22,7 @@ RUN	set -ex \
 	unzip \
   wget \
   # install supercronic (for laravel task scheduling), project page: <https://github.com/aptible/supercronic>
-	&& wget -q "https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64" \
+	&& wget -q "https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-arm64" \
 	   -O /usr/bin/supercronic \
 	&& chmod +x /usr/bin/supercronic \
 	&& mkdir /etc/supercronic \

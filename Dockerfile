@@ -26,7 +26,7 @@ RUN	set -ex \
 	   -O /usr/bin/supercronic \
 	&& chmod +x /usr/bin/supercronic \
 	&& mkdir /etc/supercronic \
-	&& echo '*/1 * * * * php /app/artisan indexer:anime --resume' > /etc/supercronic/laravel \
+	&& echo '*/1 * * * * php /app/artisan indexer:anime --resume --delay=0' > /etc/supercronic/laravel \
 	# && echo '*/1 * * * * php /app/artisan schedule:run' > /etc/supercronic/laravel \
 	# && echo '*/1 * * * * php /app/artisan indexer:genres' > /etc/supercronic/laravel \
 	&& rm -rf /var/lib/apt/lists/* \
